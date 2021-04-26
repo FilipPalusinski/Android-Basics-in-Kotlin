@@ -12,17 +12,17 @@ private const val BASE_URL =
     "https://android-kotlin-fun-mars-server.appspot.com"
 
 private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
-    .build()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(BASE_URL)
+        .build()
 
 interface MarsApiService {
     @GET("photos")
-    fun getPhotos(): List<MarsPhoto>
+    suspend fun getPhotos(): List<MarsPhoto>
 }
 
 object MarsApi {
